@@ -3,28 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Adventures</title>
-  <meta name="description" content="A photo portfolio of our adventures together." />
+  <title>Stef & Ambi | Our Adventures</title>
+  <meta name="description" content="A small portfolio website for our favorite adventures and memories together." />
   <style>
     :root {
-      --bg: #f6f1eb;
-      --card: #fffaf6;
-      --text: #2f2a26;
-      --muted: #776e67;
-      --accent: #9a6b52;
-      --accent-dark: #7d5440;
-      --line: #e7d9cf;
-      --shadow: 0 10px 30px rgba(0,0,0,0.08);
-      --radius: 18px;
-      --max: 1150px;
+      --bg: #f7f3ef;
+      --bg-soft: #fcfaf8;
+      --card: rgba(255, 255, 255, 0.72);
+      --text: #2b2623;
+      --muted: #756b64;
+      --line: #e6d9cf;
+      --accent: #9a6d56;
+      --accent-dark: #7f5643;
+      --shadow: 0 10px 30px rgba(55, 35, 20, 0.08);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #f9f5f0, #f3ece5);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, #fffaf6 0%, transparent 35%),
+        linear-gradient(180deg, #fbf7f2 0%, #f3ece5 100%);
       line-height: 1.6;
     }
 
@@ -32,123 +45,193 @@
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 14px;
+      border-radius: var(--radius-md);
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     .container {
-      width: min(92%, var(--max));
+      width: min(92%, var(--max-width));
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(249, 245, 240, 0.75);
-      border-bottom: 1px solid rgba(231, 217, 207, 0.7);
       z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(251, 247, 242, 0.7);
+      border-bottom: 1px solid rgba(230, 217, 207, 0.7);
     }
 
     .nav {
+      min-height: 76px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
-      font-size: 0.95rem;
       color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
     }
 
     .hero {
-      padding: 72px 0 48px;
+      min-height: calc(100vh - 76px);
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 36px;
       align-items: center;
+      padding: 48px 0 36px;
     }
 
-    .hero-text h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 1.05;
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(154, 109, 86, 0.10);
+      color: var(--accent-dark);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 0.95;
       margin-bottom: 18px;
+      letter-spacing: -0.04em;
     }
 
-    .hero-text p {
-      max-width: 56ch;
+    .hero p {
+      max-width: 52ch;
       color: var(--muted);
-      margin-bottom: 24px;
-      font-size: 1.05rem;
+      font-size: 1.06rem;
+      margin-bottom: 26px;
     }
 
     .hero-buttons {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      margin-bottom: 24px;
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
       padding: 12px 18px;
       border-radius: 999px;
-      font-weight: bold;
+      font-weight: 700;
       transition: 0.2s ease;
     }
 
     .btn-primary {
       background: var(--accent);
       color: white;
+      box-shadow: var(--shadow);
     }
 
     .btn-primary:hover {
       background: var(--accent-dark);
+      transform: translateY(-1px);
     }
 
     .btn-secondary {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.65);
+      background: rgba(255, 255, 255, 0.65);
     }
 
-    .hero-image {
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 12px;
+      border: 1px solid rgba(230, 217, 207, 0.85);
+      border-radius: var(--radius-lg);
+      padding: 14px;
       box-shadow: var(--shadow);
     }
 
-    section {
-      padding: 34px 0 70px;
+    .hero-card img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 22px;
     }
 
-    .section-title {
-      font-size: 1.8rem;
+    .floating-tag {
+      position: absolute;
+      right: -8px;
+      bottom: 24px;
+      background: rgba(255, 250, 246, 0.95);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+      max-width: 220px;
+    }
+
+    .floating-tag span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-top: 2px;
+    }
+
+    section {
+      padding: 34px 0 82px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.05;
       margin-bottom: 10px;
     }
 
-    .section-text {
+    .section-header p {
+      max-width: 62ch;
       color: var(--muted);
-      max-width: 64ch;
-      margin-bottom: 28px;
     }
 
-    .story-grid {
+    .memory-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
@@ -156,8 +239,8 @@
 
     .card {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border: 1px solid rgba(230, 217, 207, 0.85);
+      border-radius: var(--radius-lg);
       padding: 14px;
       box-shadow: var(--shadow);
     }
@@ -169,13 +252,34 @@
     }
 
     .card h3 {
-      margin-bottom: 8px;
       font-size: 1.15rem;
+      margin-bottom: 8px;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.97rem;
+    }
+
+    .quote-block {
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,248,243,0.7));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-block p {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: 1.3;
+      max-width: 28ch;
+    }
+
+    .quote-block small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .gallery-grid {
@@ -184,10 +288,25 @@
       gap: 14px;
     }
 
+    .gallery-grid figure {
+      overflow: hidden;
+      border-radius: 22px;
+      background: #eee5de;
+      border: 1px solid rgba(230, 217, 207, 0.85);
+      box-shadow: var(--shadow);
+    }
+
     .gallery-grid img {
+      width: 100%;
       height: 100%;
+      min-height: 240px;
       object-fit: cover;
-      min-height: 220px;
+      transition: transform 0.35s ease;
+      border-radius: 0;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.03);
     }
 
     .g1 { grid-column: span 5; }
@@ -195,6 +314,12 @@
     .g3 { grid-column: span 4; }
     .g4 { grid-column: span 4; }
     .g5 { grid-column: span 4; }
+    .g6 { grid-column: span 6; }
+    .g7 { grid-column: span 6; }
+    .g8 { grid-column: span 3; }
+    .g9 { grid-column: span 3; }
+    .g10 { grid-column: span 3; }
+    .g11 { grid-column: span 3; }
 
     .timeline {
       display: grid;
@@ -203,37 +328,83 @@
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 18px;
-      background: rgba(255,255,255,0.55);
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,0.6);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
     }
 
     .timeline-year {
-      font-weight: bold;
       color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 6px;
+      font-size: 1.08rem;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+    }
+
+    .ending {
+      padding-bottom: 90px;
+    }
+
+    .ending-card {
+      text-align: center;
+      padding: 42px 24px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(250,243,237,0.92));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .ending-card h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      margin-bottom: 12px;
+    }
+
+    .ending-card p {
+      max-width: 54ch;
+      margin: 0 auto 20px;
+      color: var(--muted);
     }
 
     footer {
-      padding: 28px 0 50px;
-      color: var(--muted);
+      padding: 26px 0 42px;
       text-align: center;
-      font-size: 0.95rem;
+      color: var(--muted);
+      font-size: 0.94rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero,
-      .story-grid {
+      .memory-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 32px;
+      }
+
+      .floating-tag {
+        position: static;
+        margin-top: 14px;
+        max-width: none;
       }
 
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .g1, .g2, .g3, .g4, .g5 {
+      .g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8, .g9, .g10, .g11 {
         grid-column: auto;
       }
 
@@ -242,18 +413,30 @@
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 620px) {
       .nav {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.92rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 12vw, 4rem);
       }
 
       .gallery-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 42px;
+      .gallery-grid img {
+        min-height: 220px;
+      }
+
+      .ending-card {
+        padding: 30px 18px;
       }
     }
   </style>
@@ -261,9 +444,9 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="logo">Our Adventures</div>
+      <div class="logo">Stef & Ambi</div>
       <nav class="nav-links">
-        <a href="#about">About</a>
+        <a href="#home">Home</a>
         <a href="#memories">Memories</a>
         <a href="#gallery">Gallery</a>
         <a href="#timeline">Timeline</a>
@@ -272,103 +455,157 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Small moments, big adventures.</h1>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Our little travel journal</div>
+        <h1>Adventures, sunsets, and all the moments in between.</h1>
         <p>
-          A little corner of the internet for our trips, sunsets, hikes, beach days,
-          city walks, road trips, and all the memories in between.
+          A simple portfolio for our favorite memories together — the places we went,
+          the photos we kept, and the stories we still come back to.
         </p>
         <div class="hero-buttons">
-          <a class="btn btn-primary" href="#gallery">View gallery</a>
-          <a class="btn btn-secondary" href="#timeline">See our story</a>
+          <a class="btn btn-primary" href="#gallery">Open gallery</a>
+          <a class="btn btn-secondary" href="#timeline">View timeline</a>
+        </div>
+        <p class="hero-note">
+          Built as a small GitHub Pages site with our photos and memories.
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="stefam1.jpeg" alt="Favorite photo of Stef and Ambi together" />
+        </div>
+        <div class="floating-tag">
+          Favorite memory
+          <span>One photo, one place, one moment we always want to remember.</span>
         </div>
       </div>
-
-      <div class="hero-image">
-        <img src="hero.jpg" alt="A favorite photo of us from one of our adventures" />
-      </div>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">About this site</h2>
-      <p class="section-text">
-        This portfolio collects some of our favorite places and memories together.
-        You can turn it into a living scrapbook by adding new trips, photos, short captions,
-        and even little notes for each place.
-      </p>
     </section>
 
     <section id="memories">
-      <h2 class="section-title">Featured memories</h2>
-      <p class="section-text">
-        Pick a few moments that mean the most to you and highlight them here.
-      </p>
+      <div class="section-header">
+        <h2>Featured memories</h2>
+        <p>
+          A few snapshots that deserve their own little space before the full gallery starts.
+        </p>
+      </div>
 
-      <div class="story-grid">
+      <div class="memory-grid">
         <article class="card">
-          <img src="memory-1.jpg" alt="Us on a beach at sunset" />
-          <h3>Summer escape</h3>
+          <img src="stefam2.jpeg" alt="A special photo from one of our adventures" />
+          <h3>Golden hour</h3>
           <p>
-            Warm air, salty water, and one of those evenings that felt like time stopped.
+            The kind of evening where everything looked softer, warmer, and somehow perfect.
           </p>
         </article>
 
         <article class="card">
-          <img src="memory-2.jpg" alt="A hiking trip together in the mountains" />
-          <h3>Mountain day</h3>
+          <img src="stefam3.jpeg" alt="A memory from a shared trip together" />
+          <h3>New places</h3>
           <p>
-            Early start, tired legs, and a view that made every step worth it.
+            Exploring somewhere unfamiliar always turned into one more story worth keeping.
           </p>
         </article>
 
         <article class="card">
-          <img src="memory-3.jpg" alt="A city trip with us walking together" />
-          <h3>City weekend</h3>
+          <img src="stefam4.jpeg" alt="A favorite moment from our time together" />
+          <h3>Just us</h3>
           <p>
-            Coffee, hidden streets, late-night walks, and photos we still keep coming back to.
+            Not every memory needs a big adventure — sometimes the best ones are simply quiet.
           </p>
         </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote-block">
+        <p>
+          “The best part was never just the place — it was being there together.”
+        </p>
+        <small>Our adventures, one memory at a time.</small>
       </div>
     </section>
 
     <section id="gallery">
-      <h2 class="section-title">Gallery</h2>
-      <p class="section-text">
-        Add your favorite photos here. This layout works best with a mix of portrait and landscape images.
-      </p>
+      <div class="section-header">
+        <h2>Photo collection</h2>
+        <p>
+          A growing collection of moments, places, weekends away, and everything that made them special.
+        </p>
+      </div>
 
       <div class="gallery-grid">
-        <img class="g1" src="gallery-1.jpg" alt="Travel memory 1" />
-        <img class="g2" src="gallery-2.jpg" alt="Travel memory 2" />
-        <img class="g3" src="gallery-3.jpg" alt="Travel memory 3" />
-        <img class="g4" src="gallery-4.jpg" alt="Travel memory 4" />
-        <img class="g5" src="gallery-5.jpg" alt="Travel memory 5" />
+        <figure class="g1"><img src="stefam1.jpeg" alt="Gallery photo 1" /></figure>
+        <figure class="g2"><img src="stefam5.jpeg" alt="Gallery photo 2" /></figure>
+        <figure class="g3"><img src="stefam6.jpeg" alt="Gallery photo 3" /></figure>
+        <figure class="g4"><img src="stefam7.jpeg" alt="Gallery photo 4" /></figure>
+        <figure class="g5"><img src="stefam8.jpeg" alt="Gallery photo 5" /></figure>
+        <figure class="g6"><img src="stefam9.jpeg" alt="Gallery photo 6" /></figure>
+        <figure class="g7"><img src="stefam10.jpeg" alt="Gallery photo 7" /></figure>
+        <figure class="g8"><img src="stefam11.jpeg" alt="Gallery photo 8" /></figure>
+        <figure class="g9"><img src="stefam2.jpeg" alt="Gallery photo 9" /></figure>
+        <figure class="g10"><img src="stefam3.jpeg" alt="Gallery photo 10" /></figure>
+        <figure class="g11"><img src="stefam4.jpeg" alt="Gallery photo 11" /></figure>
       </div>
     </section>
 
     <section id="timeline">
-      <h2 class="section-title">Our timeline</h2>
-      <p class="section-text">
-        A simple way to show your adventures year by year or trip by trip.
-      </p>
+      <div class="section-header">
+        <h2>Our timeline</h2>
+        <p>
+          You can change these texts later to match real trips, dates, or places.
+        </p>
+      </div>
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-year">2023</div>
-          <div>
-            <h3>Where it started</h3>
-            <p>First trips, first favorite photos, and the beginning of our shared collection.</p>
+          <div class="timeline-year">Beginning</div>
+          <div class="timeline-content">
+            <h3>The first memories</h3>
+            <p>
+              The first photos that felt too special to leave forgotten in a camera roll.
+            </p>
           </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-year">2024</div>
-          <div>
-            <h3>More places, more memories</h3>
-            <p>Weekend escapes, beach sunsets, and the kind of adventures that became traditions.</p>
+          <div class="timeline-year">More trips</div>
+          <div class="timeline-content">
+            <h3>More places together</h3>
+            <p>
+              A growing collection of day trips, weekends away, and favorite little moments.
+            </p>
           </div>
         </div>
 
         <div class="timeline-item">
-          <div 
+          <div class="timeline-year">Still going</div>
+          <div class="timeline-content">
+            <h3>More to come</h3>
+            <p>
+              This page can keep growing with every new adventure, photo, and memory we want to save.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ending">
+      <div class="ending-card">
+        <h2>To many more adventures.</h2>
+        <p>
+          A small website for the moments that mattered, and for all the ones still waiting ahead.
+        </p>
+        <a class="btn btn-primary" href="#home">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Made with love for our memories together.
+    </div>
+  </footer>
+</body>
+</html>
