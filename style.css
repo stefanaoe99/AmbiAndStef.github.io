@@ -203,6 +203,10 @@ section {
   padding: 34px 0 82px;
 }
 
+section[id] {
+  scroll-margin-top: 110px;
+}
+
 .section-header {
   margin-bottom: 24px;
 }
