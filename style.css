@@ -22,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -204,11 +205,21 @@ section {
 }
 
 section[id] {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 120px;
 }
 
 .section-header {
   margin-bottom: 24px;
+  scroll-margin-top: 140px;
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 140px;
+  margin-top: -140px;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .section-header h2 {
